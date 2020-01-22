@@ -1,0 +1,176 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17 janv. 2020, 15:44:00
+    Author     : franck
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@keyframes anime-welcome1 {
+    0% {
+        top:70x;
+        left:120px;
+        filter: hue-rotate(350deg);
+        filter: saturate(60%);
+    }
+    10% {
+        filter: saturate(400%);
+        filter: hue-rotate(200deg);
+    }
+    15% {
+        top:470x;
+        left:0px;
+        filter: saturate(300%);
+    }
+    20% {
+        filter: saturate(400%);
+        filter: hue-rotate(200deg);
+    }
+    30% {
+        filter: saturate(400%);
+        filter: hue-rotate(200deg);
+    }
+    40% {
+        filter: saturate(400%);
+        filter: hue-rotate(200deg);
+    }
+    45% {
+        filter: saturate(300%);
+        filter: invert(1); 
+    }
+    50% {
+        top:50%;
+        left:100;
+        filter: saturate(900%);
+        filter: hue-rotate(0deg);
+    }
+    60% {
+        filter: saturate(220%);
+        filter: hue-rotate(0deg);
+    }
+    70% {
+        filter: saturate(300%);
+    }
+    80% {
+        filter: hue-rotate(120deg);    
+    }
+    90% {
+        filter: hue-rotate(300deg);
+        filter: invert(2); 
+    }
+    100% {
+        filter: saturate(800%);
+        top:350x;
+        left:159px;
+
+    }
+}
+div.welcome1{ 
+    height: 100vh;   
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 0, 0;
+    background-size: cover; 
+    background-image: url(../media/violence_aseptisee_faite_aux_femmes_2019.jpg);
+    filter: saturate(50%);
+    filter: hue-rotate(0deg);
+    animation: anime-welcome1 5s infinite;
+}
+
+
+.ta1 {
+    width:80px;
+    animation: anime-ta-1 10s infinite;
+}
+@keyframes anime-ta-1 {
+    0% {
+        top:1000x;
+        left:800px;        
+        transform: translateX(0px);
+    }
+    20% {
+        transform: translateX(150px);
+    }
+    50% {
+        transform: translateX(150px) rotate(180deg);
+    }
+    75% {
+        transform: translateX(150px) rotate(3deg);
+    }
+    100% {
+        top:70x;
+        left:10px;
+        transform: translateX(600px) rotate(3deg);
+    }
+}
+.ta2 {
+    width:100px;
+    animation: anime-ta-1 4s infinite;
+   
+}
+@keyframes anime-ta-2 {
+    0% {
+        top: 300px;
+        left:300px;
+        transform: translateY(200px);
+    }
+    20% {
+        transform: translateX(600px);
+    }
+    50% {
+        transform: translateX(350px) rotate(-180deg);
+    }
+    75% {
+        transform: translateY(150px) rotate(220deg);
+    }
+    100% {
+        transform: translateY(200px) rotate(-300deg);
+        top:70x;
+        left:1000px;
+    }
+}
+
+.ta3 {
+    width:140px;
+    animation: anime-ta-1 9s infinite;
+   
+}
+@keyframes anime-ta-3 {
+    0% {
+        top: 600px;
+        left:1000px;
+        transform: translateY(0px) rotate(-340deg);
+    }
+    20% {
+        transform: translateX(700px) rotate(80deg);
+    }
+    50% {
+        transform: translateX(30px) rotate(-100deg);
+    }
+    75% {
+        transform: translateY(0px) rotate(400deg);
+    }
+    100% {
+        transform: translateY(400px) rotate(300deg);
+        top:20x;
+        left:20px;
+    }
+}
+
+
+            <div class="ta2" id="ta2"><img src="./media/ta1.png" class="ta2" ></div>
+            <div class="ta3" id="ta2"><img src="./media/ta1.png" class="ta3" ></div>
+            <div class="ta4" id="ta2"><img src="./media/ta1.png" class="ta4" ></div>
+            <div class="ta5" id="ta2"><img src="./media/ta1.png" class="ta5" ></div>
