@@ -16,6 +16,13 @@ var clothesHips = document.getElementById('clothesHips');
 var clothesLegs = document.getElementById('clothesLegs');
 var clothesTorso = document.getElementById('clothesTorso');
 var clothes = document.querySelector('.vet-all img');
+var checkMeAll = document.getElementById('check-me-all');
+var checkme = document.getElementById("chek-me-up");
+var navToClara = document.getElementById('navToClara');
+var navToTatjiana = document.getElementById('navToTatjiana');
+var navToGuillaume = document.getElementById('navToGuillaume');
+var navToFranck = document.getElementById('navToFranck');
+var navToPh = document.getElementById('navToPh');
 
 var scorePlayer = 0;
 var scorePlayerByItem = new Object();
@@ -23,6 +30,10 @@ scorePlayerByItem["head"] = 0;
 scorePlayerByItem["hips"] = 0;
 scorePlayerByItem["legs"] = 0;
 scorePlayerByItem["torso"] = 0;
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Player {
     constructor() {
@@ -46,14 +57,12 @@ class Player {
     
     savePlayer() {
     }
-    loadPlayer(globalPuppet) {                
-        clothesHead.style.marginLeft = "-"+( (this.positions[globalPuppet.name.toLowerCase()][0]*189)).toString()+"px";
-        clothesTorso.style.marginLeft = "-"+( (this.positions[globalPuppet.name.toLowerCase()][1]*189)).toString()+"px";
-        clothesHips.style.marginLeft = "-"+( (this.positions[globalPuppet.name.toLowerCase()][2]*189)).toString()+"px";
-        clothesLegs.style.marginLeft = "-"+( (this.positions[globalPuppet.name.toLowerCase()][3]*189)).toString()+"px";
-        console.log("____________________________________");
-        console.log(clothesHead.style.marginLeft, clothesTorso.style.marginLeft, clothesHips.style.marginLeft, clothesLegs.style.marginLeft );    
-        console.log("____________________________________");
+    loadPlayer(myPuppet) {                
+        clothesHead.style.marginLeft = ( (this.positions[myPuppet.name.toLowerCase()][0]*189)).toString()+"px";
+        clothesTorso.style.marginLeft = ( (this.positions[myPuppet.name.toLowerCase()][1]*189)).toString()+"px";
+        clothesHips.style.marginLeft = ( (this.positions[myPuppet.name.toLowerCase()][2]*189)).toString()+"px";
+        clothesLegs.style.marginLeft = ( (this.positions[myPuppet.name.toLowerCase()][3]*189)).toString()+"px";
+        this.score;
     }
     updatePlayer(sourceScore, score, puppetClotheValue){
         let indice = 0;
@@ -69,7 +78,6 @@ class Player {
         
         this.positions[globalPuppet.name.toLowerCase()][indice]=puppetClotheValue;
         this.score = score;
-        console.log(playerOne);
     }    
 }
 var playerOne = new Player();
@@ -128,13 +136,12 @@ class Puppet {
     }    
 }  
 
-const franckPuppet = new Puppet( true, "media/franck.png", "media/franck-nu.png" , "Franck@ironhack.com",     "Franck",   1, -2, 3 , 5 , 2 , 4 , 4, 0);           
-const claraPuppet = new Puppet( true, "media/clara.png", "media/clara-nu.png" , "clara@ironhack.com",       "Clara",    0, 2, 3 , 5 , 2 , 4 , 4, 0);
-const tatjianaPuppet = new Puppet( true, "media/tatjiana.png", "media/tatjiana-nu.png", "tatjiana@ironhack.com", "Tatjiana", 0, 2, 3 , 5 , 2 , 4 , 4,0);
-const phPuppet = new Puppet( true, "media/ph.png", "media/ph-nu.png" , "ph@ironhack.com",             "Ph",       1, 2, 3 , 5 , 2 , 4 , 4, 0);
-const guillaumePuppet = new Puppet( true, "media/guillaume.png" , "media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume", 2, 2, 3 , 5 , 2 , 4 , 4, 0);
-
-var  yourPuppet = new Puppet( true, "media/guillaume.png", "media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume", 0, 2, 3 , 5 , 2 , 4 , 4, 0);
+const franckPuppet = new Puppet( true, "media/franck.png", "media/franck-nu.png" , "Franck@ironhack.com",     "Franck",   1,         -2, -3 , -5 , -2 , 4 , 4, 0);           
+const claraPuppet = new Puppet( true, "media/clara.png", "media/clara-nu.png" , "clara@ironhack.com",       "Clara",    0,           -2, -3 , -5 , -2 , 4 , 4, 0);
+const tatjianaPuppet = new Puppet( true, "media/tatjiana.png", "media/tatjiana-nu.png", "tatjiana@ironhack.com", "Tatjiana", 0,      -2, -3 , -5 , -2 , 4 , 4, 0);
+const phPuppet = new Puppet( true, "media/ph.png", "media/ph-nu.png" , "ph@ironhack.com",             "Ph",       1,                 -2, -3 , -5 , -2 , 4 , 4, 0);
+const guillaumePuppet = new Puppet( true, "media/guillaume.png" , "media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume",2, -2, -3 , -5 , -2 , 4 , 4, 0);
+var  yourPuppet = new Puppet( true, "media/guillaume.png", "media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume", 0,       -2, -3 , -5 , -2 , 4 , 4, 0);
 
 let globalPuppet = new Object(); 
 
@@ -224,31 +231,6 @@ function goDownInClothesL() {
 }
 
 let score = 0;
-
-spriteuh.addEventListener('click', function () {
-    goUpInClothesH();    
-});
-spritedh.addEventListener('click', function () {
-    goDownInClothesH();
-});
-spriteuhi.addEventListener('click', function () {
-    goUpInClothesHi();
-});
-spritedhi.addEventListener('click', function () {
-    goDownInClothesHi();
-});
-spriteut.addEventListener('click', function () {
-    goUpInClothesT();
-});
-spritedt.addEventListener('click', function () {
-    goDownInClothesT();
-});
-spriteul.addEventListener('click', function () {
-    goUpInClothesL();
-});
-spritedl.addEventListener('click', function () {
-    goDownInClothesL();
-});
 
 var sexe = [ "female", "male", "no-genre" ];
 var sentenceTemplate = ["war is peace", "ognorance is strengh", "freedom is slavery"];
@@ -361,61 +343,37 @@ var rateLegs = [
 ]
 function modifyScore( sourceScore, localScore, puppetClotheValue) {      
     scorePlayerByItem[sourceScore] = puppetClotheValue;
-    scorePlayer = scorePlayer+localScore;    
+    scorePlayer = playerOne.score+localScore;    
     document.getElementById("your-score").innerHTML =  `Instant score : ${scorePlayer} pts<div class="bullshit">but this is bullshit just to please the TA ...</div>`; 
-    playerOne.updatePlayer(sourceScore, scorePlayer , puppetClotheValue)
+    playerOne.updatePlayer(sourceScore, scorePlayer , puppetClotheValue);
+    playerOne.score = localScore;
 } 
 
-var checkme = document.getElementById("chek-me-up")
-checkme.addEventListener('click', function () {
-    checkMe();
-});
-
 function checkMe(){
-    
-    if (window.location.href.split("=")[1] == "ph") {
-        globalPuppet=phPuppet; 
-    }
-    if (window.location.href.split("=")[1] == "clara") {
-        globalPuppet=claraPuppet; 
-    }
-    if (window.location.href.split("=")[1] == "tatjiana") {
-        globalPuppet=tatjianaPuppet; 
-    }
-    if (window.location.href.split("=")[1] == "guillaume") {
-        globalPuppet=guillaumePuppet; 
-    }
-    if (window.location.href.split("=")[1] == "franck") {
-        globalPuppet=franckPuppet; 
-    }
-    
     let details = "";
     let enderScore = 0;
-    console.log("_________________________________________");
-    console.log(scorePlayerByItem);
-    console.log(globalPuppet);
     if ( globalPuppet.head != scorePlayerByItem["head"] ){
-       details += "<span class='hclue'>i 've got a bad feeling about your head ... </span>";
+       details += "<span class='hclue'>Head: i 've got a bad feeling about it ... </span>";
     } else {
-       details += "<span class='hclue' style='black'>You're the dude </span>";         
+       details += "<span class='hclue' style='black'>Head: You're the dude </span>";         
        enderScore += 1;
    }
     if ( globalPuppet.torso != scorePlayerByItem["torso"] ){
-       details += "<span class='tclue'>not shaped enough ... </span>";         
+       details += "<span class='tclue'>Torso: not shaped enough ... </span>";         
     } else {
-       details += "<span class='hclue' style='black'>This TA is the best velvet designer in thh world ... </span>";         
+       details += "<span class='hclue' style='black'>Torso: This TA is the best velvet costume designer in the world ... </span>";         
        enderScore += 1;
     }
     if ( globalPuppet.hips != scorePlayerByItem["hips"] ){
-       details += "<span class='hiclue'>hips don't lie ... </span>";                 
+       details += "<span class='hiclue'>Hips: hips don't lie ... </span>";                 
     } else {
-       details += "<span class='hclue' style='black'>Don't hesitate with these hips ... </span>";         
+       details += "<span class='hclue' style='black'>Hips: Don't hesitate with these hips ... </span>";         
        enderScore += 1;
     }
     if ( globalPuppet.legs != scorePlayerByItem["legs"] ){
-       details += "<span class='lclue'>don't show me your legs anymore ... </span>";         
+       details += "<span class='lclue'>Legs: don't show me your legs anymore ... </span>";         
     } else {
-       details += "<span class='hclue' style='black'>THe always tell the truth </span>";         
+       details += "<span class='hclue' style='black'>Legs: They always tell the truth </span>";         
        enderScore += 1;
     }
     
@@ -423,20 +381,116 @@ function checkMe(){
     details += scorePlayerByItem["head"]+" "+scorePlayerByItem["torso"]+" "+scorePlayerByItem["hips"]+" "+scorePlayerByItem["legs"]
     
     //verifir le scor ligne par ligne
-   document.getElementById("comments").innerHTML = "Bad news for your sunshine, this is not what you expected to see you're too bad ! No time for excuses ! Go back to work and do it better next time ... and as i am not a bad guy here are some clues details to help you : "+details;
+   document.getElementById("comments").innerHTML = "Bad news for your sunshine, this is not what you expected to see you're too bad ! No time for excuses ! Go back to work and do it better next time ... and as i am not a bad guy here are some clues details to help you : <br />"+details;
 
     if ( enderScore >= 4) {
-        document.getElementById("comments").innerHTML = "You 're the designer of Chanel !!! "
+        document.getElementById("comments").innerHTML = "<span style='fontsize:20px;color:green;'>You 're the new Largerfeld !!! You won a date with the TA of your choice (well ... not .. that was a trap). Happy to see you again<span>"
     }
-
 }
 
-var navToClara = document.getElementById('navToClara');
-var navToTatjiana = document.getElementById('navToTatjiana');
-var navToGuillaume = document.getElementById('navToGuillaume');
-var navToFranck = document.getElementById('navToFranck');
-var navToPh = document.getElementById('navToPh');
+function checkAll() {
+    
+        let finalScore = 0;
+        console.log(playerOne.positions);
+        console.log(claraPuppet);
+        console.log(guillaumePuppet);
+        console.log(franckPuppet);
+        console.log(phPuppet);
+        console.log(tatjianaPuppet);
+                
+        claraPuppet.head == playerOne.positions["clara"][0] ? null : finalScore++ ;
+        claraPuppet.torso == playerOne.positions["clara"][1] ? null : finalScore++ ;
+        claraPuppet.hips == playerOne.positions["clara"][2] ? null : finalScore++ ;
+        claraPuppet.legs == playerOne.positions["clara"][3] ? null : finalScore++ ;
 
+        guillaumePuppet.head == playerOne.positions["guillaume"][0] ? null : finalScore++ ;
+        guillaumePuppet.torso == playerOne.positions["guillaume"][1] ? null : finalScore++ ;
+        guillaumePuppet.hips == playerOne.positions["guillaume"][2] ? null : finalScore++ ;
+        guillaumePuppet.legs == playerOne.positions["guillaume"][3] ? null : finalScore++ ;
+
+        franckPuppet.head == playerOne.positions["franck"][0] ? null : finalScore++ ;
+        franckPuppet.torso == playerOne.positions["franck"][1] ? null : finalScore++ ;
+        franckPuppet.hips == playerOne.positions["franck"][2] ? null : finalScore++ ;
+        franckPuppet.legs == playerOne.positions["franck"][3] ? null : finalScore++ ;
+
+        phPuppet.head == playerOne.positions["ph"][0] ? null : finalScore++ ;
+        phPuppet.torso == playerOne.positions["ph"][1] ? null : finalScore++ ;
+        phPuppet.hips == playerOne.positions["ph"][2] ? null : finalScore++ ;
+        phPuppet.legs == playerOne.positions["ph"][3] ? null : finalScore++ ;
+
+        tatjianaPuppet.head == playerOne.positions["tatjiana"][0] ? null : finalScore++ ;
+        tatjianaPuppet.torso == playerOne.positions["tatjiana"][1] ? null : finalScore++ ;
+        tatjianaPuppet.hips == playerOne.positions["tatjiana"][2] ? null : finalScore++ ;
+        tatjianaPuppet.legs == playerOne.positions["tatjiana"][3] ? null : finalScore++ ;
+    
+        alert(finalScore);
+}
+
+if (window.location.href.split("=")[1] != "") {
+    navTo(window.location.href.split("=")[1])
+}
+
+function navTo(ta) {
+    if ( ta == "ph") {
+        phPuppet.displayPuppet();
+        globalPuppet=phPuppet; 
+        playerOne.loadPlayer(phPuppet);
+    }
+    if ( ta == "clara") {
+        claraPuppet.displayPuppet();    
+        globalPuppet=claraPuppet; 
+        playerOne.loadPlayer(claraPuppet);
+    }
+    if (ta == "tatjiana") {
+        tatjianaPuppet.displayPuppet();    
+        globalPuppet=tatjianaPuppet; 
+        playerOne.loadPlayer(tatjianaPuppet);
+    }
+    if (ta == "guillaume") {
+        guillaumePuppet.displayPuppet();    
+        globalPuppet=guillaumePuppet; 
+        playerOne.loadPlayer(guillaumePuppet);
+    }
+    if (ta == "franck") {
+        franckPuppet.displayPuppet();    
+        globalPuppet=franckPuppet; 
+        playerOne.loadPlayer(franckPuppet);
+    }    
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+spriteuh.addEventListener('click', function () {
+    goUpInClothesH();    
+});
+spritedh.addEventListener('click', function () {
+    goDownInClothesH();
+});
+spriteuhi.addEventListener('click', function () {
+    goUpInClothesHi();
+});
+spritedhi.addEventListener('click', function () {
+    goDownInClothesHi();
+});
+spriteut.addEventListener('click', function () {
+    goUpInClothesT();
+});
+spritedt.addEventListener('click', function () {
+    goDownInClothesT();
+});
+spriteul.addEventListener('click', function () {
+    goUpInClothesL();
+});
+spritedl.addEventListener('click', function () {
+    goDownInClothesL();
+});
+checkMeAll.addEventListener('click', function () {
+    checkAll();
+});
+checkme.addEventListener('click', function () {
+    checkMe();
+});
 navToClara.addEventListener('click', function () {
     navTo("clara");    
 });
@@ -453,33 +507,6 @@ navToPh.addEventListener('click', function () {
     navTo("ph");    
 });
 
-if (window.location.href.split("=")[1] != "") {
-    navTo(window.location.href.split("=")[1])
-}
 
-function navTo(ta) {
-    if ( ta == "ph") {
-        phPuppet.displayPuppet();
-        globalPuppet=phPuppet;         
-    }
-    if ( ta == "clara") {
-        claraPuppet.displayPuppet();    
-        globalPuppet=claraPuppet; 
-    }
-    if (ta == "tatjiana") {
-        tatjianaPuppet.displayPuppet();    
-        globalPuppet=tatjianaPuppet; 
-    }
-    if (ta == "guillaume") {
-        guillaumePuppet.displayPuppet();    
-        globalPuppet=guillaumePuppet; 
-    }
-    if (ta == "franck") {
-        franckPuppet.displayPuppet();    
-        globalPuppet=franckPuppet; 
-    }    
-    console.log(globalPuppet);
-    playerOne.loadPlayer(globalPuppet);
-}
 
 

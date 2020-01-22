@@ -59,18 +59,22 @@ aside {
 #ken-aside .hell{
         font-size: 40px;
         padding: 20px;
+        padding-bottom: 0px;        
 }
 #ken-aside .nude{
         padding: 20px;
         font-size: 30px;
+        padding-bottom: 0px;
 }
 #ken-aside .him{
         padding: 20px;
         font-size: 20px;
+        padding-bottom: 0px;
 }
 #ken-aside .proper{
         padding: 20px;
         font-size: 20px;
+        padding-bottom: 0px;
 }
 
 .heartbeat {
@@ -221,6 +225,18 @@ button.chek-me-up {
     font-family: inherit;
 }
 
+button.chek-me-all {
+    border-radius: 10px;
+    border: 2px solid olive;
+    background-color: greenyellow;
+    width: 70%;
+    color: black;
+    font-size: 33px;
+    height: 40px;
+    margin: 20px;
+    font-family: inherit;
+}
+
 .ken {
     flex:1;
     display: flex;
@@ -254,16 +270,17 @@ button.chek-me-up {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding-top:50px;
+    padding-top:25px;
 }
 .ken-footer a {
     text-decoration: none;
 }
 
 .dressNav {
-     font-size: 20px;
+    font-size: 20px;
     font-weight: lighter;
     color: lightgreen;
+    cursor:pointer;
 }
 
 .ken-nu{
@@ -319,7 +336,11 @@ button.chek-me-up {
     color: khaki;
 }
 
-
+.tacheckintroducer {
+    padding-left: 20px;
+    color: #a05f5f;
+    margin-bottom: -20px;
+}
 
 
 
