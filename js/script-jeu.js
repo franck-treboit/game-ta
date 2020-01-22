@@ -110,6 +110,8 @@ class Puppet {
                          As soon as you think that your fashion choice is 
                          her fashion choice too, click here above to check your TA agreement !`
         }
+
+            
         if ( this.sex == 1 ){
             document.getElementById("him").innerHTML = `Dress him !`;            
             document.getElementById("proper").innerHTML = `
@@ -117,7 +119,7 @@ class Puppet {
                          is a bit fussy, he does'nt accept any clothes you may think of ...`;
             document.getElementById("rule").innerHTML = `
                          As soon as you think that your fashion choice is 
-                         his fashion choice too, click here above to check your TA agreement !`
+                         his fashion choice too, click here above to check your TA agreement !`         
         }
         if ( this.sex == 2 ){
             document.getElementById("him").innerHTML = `Dress that body whatever !`;            
@@ -132,6 +134,9 @@ class Puppet {
         document.getElementById("ken-nu").style.backgroundImage = "url('../"+this.imagenu+"')"; 
         let ma = Number(clothesHead.style.marginLeft.split("px")[0])-189;
         //document.getElementById("ken-header-comment").innerHTML = 0;
+        
+        
+        
 
     }    
 }  
@@ -154,6 +159,8 @@ function goUpInClothesH() {
     let levelP = (Math.floor(ma/189)).toString();
     if ( ma <= 7) {
         clothesHead.style.marginLeft = ma.toString()+"px";        
+        document.getElementById("spriteuh").innerHTML= "< Head "+ Math.abs(levelP);
+        document.getElementById("spritedh").innerHTML= "Head "+ Math.abs(levelP)+" >";
     }
     let localScore = rateHead[0].rate; 
     let puppetClotheValue = levelP ; 
@@ -164,6 +171,8 @@ function goDownInClothesH() {
     let levelP = (Math.floor(ma/189)).toString();
     if ( ma <= 7 ) {
         clothesHead.style.marginLeft = ma.toString()+"px";
+        document.getElementById("spriteuh").innerHTML= "< Head "+ Math.abs(levelP);
+        document.getElementById("spritedh").innerHTML= "Head "+ Math.abs(levelP)+" >";
     }
     let localScore = rateHead[0].rate; 
     let puppetClotheValue = levelP ; 
@@ -173,7 +182,9 @@ function goUpInClothesHi() {
     let ma = Number(clothesHips.style.marginLeft.split("px")[0])-189;
     let levelP = (Math.floor(ma/189)).toString();
     if ( ma <= 7 ) {
-    clothesHips.style.marginLeft = ma.toString()+"px";
+        clothesHips.style.marginLeft = ma.toString()+"px";
+        document.getElementById("spriteuhi").innerHTML= "< Hips "+ Math.abs(levelP);
+        document.getElementById("spritedhi").innerHTML= "Hips "+ Math.abs(levelP)+" >";
     }
     let localScore = rateHips[0].rate;
     let puppetClotheValue = levelP ; 
@@ -184,6 +195,8 @@ function goDownInClothesHi() {
     let levelP = (Math.floor(ma/189)).toString();
     if ( ma <= 7 ) {
         clothesHips.style.marginLeft = ma.toString()+"px";
+        document.getElementById("spritedhi").innerHTML= "Hips "+ Math.abs(levelP)+" >";
+        document.getElementById("spriteuhi").innerHTML= "< Hips "+ Math.abs(levelP);
     }
     let localScore = rateHips[0].rate;
     let puppetClotheValue = levelP ; 
@@ -194,6 +207,8 @@ function goUpInClothesT() {
     let levelP = (Math.floor(ma/189)).toString();
     if ( ma <= 7 ) {
         clothesTorso.style.marginLeft = ma.toString()+"px";
+        document.getElementById("spriteut").innerHTML= "< Torso "+  Math.abs(levelP);
+        document.getElementById("spritedt").innerHTML= "Torso "+  Math.abs(levelP)+" >";
     }
     let localScore = rateTorso[0].rate;
     let puppetClotheValue = levelP ; 
@@ -204,6 +219,8 @@ function goDownInClothesT() {
     let levelP = (Math.floor(ma/189)).toString();
     if ( ma <= 7 ) {
         clothesTorso.style.marginLeft = ma.toString()+"px";
+        document.getElementById("spritedt").innerHTML= "Torso "+  Math.abs(levelP)+" >";
+        document.getElementById("spriteut").innerHTML= "< Torso "+  Math.abs(levelP);
     }
     let localScore = rateTorso[0].rate;
     let puppetClotheValue = levelP ; 
@@ -214,6 +231,8 @@ function goUpInClothesL() {
     let levelP = (Math.floor(ma/189)).toString();
     if ( ma <= 7 ) {
         clothesLegs.style.marginLeft = ma.toString()+"px";
+        document.getElementById("spriteul").innerHTML= "< Legs "+ Math.abs(levelP);
+        document.getElementById("spritedl").innerHTML= "Legs "+ Math.abs(levelP)+" >";
     }
     let localScore = rateLegs[0].rate;
     let puppetClotheValue = levelP ; 
@@ -224,6 +243,8 @@ function goDownInClothesL() {
     let levelP = (Math.floor(ma/189)).toString();
     if ( ma <= 7 ) {
         clothesLegs.style.marginLeft = ma.toString()+"px";
+        document.getElementById("spriteul").innerHTML= "< Legs "+ Math.abs(levelP);
+        document.getElementById("spritedl").innerHTML= "Legs "+ Math.abs(levelP)+" >";
     }
     let localScore = rateLegs[0].rate;
     let puppetClotheValue = levelP ; 
@@ -232,23 +253,6 @@ function goDownInClothesL() {
 
 let score = 0;
 
-var sexe = [ "female", "male", "no-genre" ];
-var sentenceTemplate = ["war is peace", "ognorance is strengh", "freedom is slavery"];
-
-var environementalTemplate = [
-    {
-      "name": "The Shawshank Redemption",
-      "image":  "Frank",
-    },
-    {
-      "name": "The Franck Redemption",
-      "image":  "Darabont",
-    },
-    {
-      "name": "The guillaume Redemption",
-      "image":  "Nighel",
-    },
-];
 
 var rateHead = [
     {
@@ -398,32 +402,43 @@ function checkAll() {
         console.log(phPuppet);
         console.log(tatjianaPuppet);
                 
-        claraPuppet.head == playerOne.positions["clara"][0] ? null : finalScore++ ;
-        claraPuppet.torso == playerOne.positions["clara"][1] ? null : finalScore++ ;
-        claraPuppet.hips == playerOne.positions["clara"][2] ? null : finalScore++ ;
-        claraPuppet.legs == playerOne.positions["clara"][3] ? null : finalScore++ ;
+        (claraPuppet.head == playerOne.positions["clara"][0]) ? finalScore++ : null ;
+        (claraPuppet.torso == playerOne.positions["clara"][1]) ? finalScore++ : null ;
+        (claraPuppet.hips == playerOne.positions["clara"][2]) ? finalScore++ : null ;
+        (claraPuppet.legs == playerOne.positions["clara"][3]) ? finalScore++ : null ;
 
-        guillaumePuppet.head == playerOne.positions["guillaume"][0] ? null : finalScore++ ;
-        guillaumePuppet.torso == playerOne.positions["guillaume"][1] ? null : finalScore++ ;
-        guillaumePuppet.hips == playerOne.positions["guillaume"][2] ? null : finalScore++ ;
-        guillaumePuppet.legs == playerOne.positions["guillaume"][3] ? null : finalScore++ ;
+        (guillaumePuppet.head == playerOne.positions["guillaume"][0]) ? finalScore++ : null ;
+        (guillaumePuppet.torso == playerOne.positions["guillaume"][1]) ? finalScore++ : null ;
+        (guillaumePuppet.hips == playerOne.positions["guillaume"][2]) ? finalScore++ : null ;
+        (guillaumePuppet.legs == playerOne.positions["guillaume"][3]) ? finalScore++ : null ;
 
-        franckPuppet.head == playerOne.positions["franck"][0] ? null : finalScore++ ;
-        franckPuppet.torso == playerOne.positions["franck"][1] ? null : finalScore++ ;
-        franckPuppet.hips == playerOne.positions["franck"][2] ? null : finalScore++ ;
-        franckPuppet.legs == playerOne.positions["franck"][3] ? null : finalScore++ ;
+        (franckPuppet.head == playerOne.positions["franck"][0]) ? finalScore++ : null ;
+        (franckPuppet.torso == playerOne.positions["franck"][1]) ? finalScore++ : null ;
+        (franckPuppet.hips == playerOne.positions["franck"][2]) ? finalScore++ : null ;
+        (franckPuppet.legs == playerOne.positions["franck"][3]) ? finalScore++ : null ;
 
-        phPuppet.head == playerOne.positions["ph"][0] ? null : finalScore++ ;
-        phPuppet.torso == playerOne.positions["ph"][1] ? null : finalScore++ ;
-        phPuppet.hips == playerOne.positions["ph"][2] ? null : finalScore++ ;
-        phPuppet.legs == playerOne.positions["ph"][3] ? null : finalScore++ ;
+        (phPuppet.head == playerOne.positions["ph"][0]) ? finalScore++ : null ;
+        (phPuppet.torso == playerOne.positions["ph"][1]) ? finalScore++ : null ;
+        (phPuppet.hips == playerOne.positions["ph"][2]) ? finalScore++ : null ;
+        (phPuppet.legs == playerOne.positions["ph"][3]) ? finalScore++ : null ;
 
-        tatjianaPuppet.head == playerOne.positions["tatjiana"][0] ? null : finalScore++ ;
-        tatjianaPuppet.torso == playerOne.positions["tatjiana"][1] ? null : finalScore++ ;
-        tatjianaPuppet.hips == playerOne.positions["tatjiana"][2] ? null : finalScore++ ;
-        tatjianaPuppet.legs == playerOne.positions["tatjiana"][3] ? null : finalScore++ ;
-    
-        alert(finalScore);
+        (tatjianaPuppet.head == playerOne.positions["tatjiana"][0]) ? finalScore++ : null ;
+        (tatjianaPuppet.torso == playerOne.positions["tatjiana"][1]) ? finalScore++ : null ;
+        (tatjianaPuppet.hips == playerOne.positions["tatjiana"][2]) ? finalScore++ : null ;
+        (tatjianaPuppet.legs == playerOne.positions["tatjiana"][3]) ? finalScore++ : null ;
+        
+        let toAlert=""; 
+        //finalScore =20;
+        if ( finalScore < 20 ){
+            toAlert = "Well ... what's your problem ? a standard alert box is not enough ? But you fail ! you are just an ugly looser, then because of you and because of Pauline who has not been able to translate 'confetti' in english, your fucking score of "+finalScore+"/20 does'nt worth more than an alert box ... so try to dress up your TA's differently and maybe ... "   
+        } else { 
+            toAlert = "What ??? You were expecting a nice popup with design, music, confetti ? but because we ran out of money ( and because of Pauline again  ...) and despite fucking score of "+finalScore+"/20, we decide to use the standard alert box to inform you that your winner price will only be available when you will began you retirement period ... good bye."               
+        }   
+        alert(toAlert);
+        if ( finalScore >= 20 ){
+            window.close();
+        }   
+
 }
 
 if (window.location.href.split("=")[1] != "") {
@@ -508,5 +523,22 @@ navToPh.addEventListener('click', function () {
 });
 
 
+var sexe = [ "female", "male", "no-genre" ];
+var sentenceTemplate = ["war is peace", "ognorance is strengh", "freedom is slavery"];
+
+var environementalTemplate = [
+    {
+      "name": "The Shawshank Redemption",
+      "image":  "Frank",
+    },
+    {
+      "name": "The Franck Redemption",
+      "image":  "Darabont",
+    },
+    {
+      "name": "The guillaume Redemption",
+      "image":  "Nighel",
+    },
+];
 
 
