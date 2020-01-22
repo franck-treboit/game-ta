@@ -160,6 +160,10 @@ main {
     margin-top: 0;
 }
 
+.ken-main {
+    background-color: green;    
+}
+
 .wardrobe {
     display: flex;
     flex-direction: column;

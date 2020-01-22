@@ -83,7 +83,7 @@ class Player {
 var playerOne = new Player();
 
 class Puppet {
-    constructor( isTa, image, imagenu, email, name, sex, head, torso, hips, legs, sentenceTemplate, environementTemplate, score) {
+    constructor( isTa, image, imagenu, email, name, sex, head, torso, hips, legs, sentenceTemplate, environementTemplate, score, bgc) {
         this.isTa = isTa; 
         this.image= image; 
         this.imagenu= imagenu; 
@@ -97,6 +97,7 @@ class Puppet {
         this.sentenceTemplate = sentenceTemplate;
         this.environementTemplate = environementTemplate;
         this.score = score;
+        this.backgroundColor = bgc;
     } 
     
     displayPuppet(){
@@ -107,8 +108,8 @@ class Puppet {
                          But do it properly, this girl
                          is a bit fussy, she does'nt accept any clothes you may think of ...`;
             document.getElementById("rule").innerHTML = `
-                         As soon as you think that your fashion choice is 
-                         her fashion choice too, click here above to check your TA agreement !`
+                         As soon as you think that your fashion choices are 
+                         her fashion choices too, click here above to check your TA agreement !`
         }
 
             
@@ -118,8 +119,8 @@ class Puppet {
                          But do it properly, this man
                          is a bit fussy, he does'nt accept any clothes you may think of ...`;
             document.getElementById("rule").innerHTML = `
-                         As soon as you think that your fashion choice is 
-                         his fashion choice too, click here above to check your TA agreement !`         
+                         As soon as you think that your fashion choices are 
+                         his fashion choices too, click here above to check your TA agreement !`         
         }
         if ( this.sex == 2 ){
             document.getElementById("him").innerHTML = `Dress that body whatever !`;            
@@ -127,13 +128,14 @@ class Puppet {
                          But do it properly, this person
                          is a bit fussy, he does'nt accept any clothes you may think of ...`;
             document.getElementById("rule").innerHTML = `
-                         As soon as you think that your fashion choice is 
-                        your TA fashion choice too, click here above to check your TA agreement !`            
+                         As soon as you think that your fashion choices are 
+                        your TA fashion choices too, click here above to check your TA agreement !`            
         }        
         document.getElementById("ken-header-in").innerHTML = `Dress ${this.name} !`; 
         document.getElementById("ken-nu").style.backgroundImage = "url('../"+this.imagenu+"')"; 
         let ma = Number(clothesHead.style.marginLeft.split("px")[0])-189;
-        //document.getElementById("ken-header-comment").innerHTML = 0;
+        document.getElementById("ken-main").style.backgroundColor = this.backgroundColor;
+        
         
         
         
@@ -141,12 +143,12 @@ class Puppet {
     }    
 }  
 
-const franckPuppet = new Puppet( true, "media/franck.png", "media/franck-nu.png" , "Franck@ironhack.com",     "Franck",   1,         -2, -3 , -5 , -2 , 4 , 4, 0);           
-const claraPuppet = new Puppet( true, "media/clara.png", "media/clara-nu.png" , "clara@ironhack.com",       "Clara",    0,           -2, -3 , -5 , -2 , 4 , 4, 0);
-const tatjianaPuppet = new Puppet( true, "media/tatjiana.png", "media/tatjiana-nu.png", "tatjiana@ironhack.com", "Tatjiana", 0,      -2, -3 , -5 , -2 , 4 , 4, 0);
-const phPuppet = new Puppet( true, "media/ph.png", "media/ph-nu.png" , "ph@ironhack.com",             "Ph",       1,                 -2, -3 , -5 , -2 , 4 , 4, 0);
-const guillaumePuppet = new Puppet( true, "media/guillaume.png" , "media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume",2, -2, -3 , -5 , -2 , 4 , 4, 0);
-var  yourPuppet = new Puppet( true, "media/guillaume.png", "media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume", 0,       -2, -3 , -5 , -2 , 4 , 4, 0);
+const franckPuppet = new Puppet( true, "media/franck.png", "media/franck-nu.png" , "Franck@ironhack.com",     "Franck",   1,         -2, -3 , -5 , -2 , 4 , 4, 0, "#b11e1e");           
+const claraPuppet = new Puppet( true, "media/clara.png", "media/clara-nu.png" , "clara@ironhack.com",       "Clara",    0,           -2, -3 , -5 , -2 , 4 , 4, 0, "#23dca0");
+const tatjianaPuppet = new Puppet( true, "media/tatjiana.png", "media/tatjiana-nu.png", "tatjiana@ironhack.com", "Tatjiana", 0,      -2, -3 , -5 , -2 , 4 , 4, 0, "#5f1a1d");
+const phPuppet = new Puppet( true, "media/ph.png", "media/ph-nu.png" , "ph@ironhack.com",             "Ph",       1,                 -2, -3 , -5 , -2 , 4 , 4, 0, "#c211ce");
+const guillaumePuppet = new Puppet( true, "media/guillaume.png" , "media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume",2, -2, -3 , -5 , -2 , 4 , 4, 0, "#107ad6");
+var  yourPuppet = new Puppet( true, "media/guillaume.png", "media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume", 0,       -2, -3 , -5 , -2 , 4 , 4, 0, "#FFFFFF");
 
 let globalPuppet = new Object(); 
 
@@ -296,7 +298,7 @@ var rateTorso = [
     {
         "image": "",
         "name": "",
-        "rate" : +6,
+        "rate" : 6,
     },
 ]
 
@@ -319,7 +321,7 @@ var rateHips = [
     {
         "image": "",
         "name": "",
-        "rate" : +6,
+        "rate" : 6,
     },
 ]
 
@@ -342,7 +344,7 @@ var rateLegs = [
     {
         "image": "",
         "name": "",
-        "rate" : +6,
+        "rate" : 6,
     },
 ]
 function modifyScore( sourceScore, localScore, puppetClotheValue) {      
@@ -357,27 +359,27 @@ function checkMe(){
     let details = "";
     let enderScore = 0;
     if ( globalPuppet.head != scorePlayerByItem["head"] ){
-       details += "<span class='hclue'>Head: i 've got a bad feeling about it ... </span>";
+       details += "<span class='hclue'>Head: i 've got a bad feeling about it ...</span><br />";
     } else {
-       details += "<span class='hclue' style='black'>Head: You're the dude </span>";         
+       details += "<span class='hclue' style='black'>Head: You're the dude </span><br />";         
        enderScore += 1;
    }
     if ( globalPuppet.torso != scorePlayerByItem["torso"] ){
-       details += "<span class='tclue'>Torso: not shaped enough ... </span>";         
+       details += "<span class='tclue'>Torso: not shaped enough ... </span><br />";         
     } else {
-       details += "<span class='hclue' style='black'>Torso: This TA is the best velvet costume designer in the world ... </span>";         
+       details += "<span class='hclue' style='black'>Torso: This TA is the best velvet costume designer in the world ... </span><br />";         
        enderScore += 1;
     }
     if ( globalPuppet.hips != scorePlayerByItem["hips"] ){
-       details += "<span class='hiclue'>Hips: hips don't lie ... </span>";                 
+       details += "<span class='hiclue'>Hips: hips don't lie ... </span><br />";                 
     } else {
-       details += "<span class='hclue' style='black'>Hips: Don't hesitate with these hips ... </span>";         
+       details += "<span class='hclue' style='black'>Hips: Don't hesitate with these hips ... </span><br />";         
        enderScore += 1;
     }
     if ( globalPuppet.legs != scorePlayerByItem["legs"] ){
-       details += "<span class='lclue'>Legs: don't show me your legs anymore ... </span>";         
+       details += "<span class='lclue'>Legs: don't show me your legs anymore ... </span><br />";         
     } else {
-       details += "<span class='hclue' style='black'>Legs: They always tell the truth </span>";         
+       details += "<span class='hclue' style='black'>Legs: They always tell the truth </span><br />";         
        enderScore += 1;
     }
     
