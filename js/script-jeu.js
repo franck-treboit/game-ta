@@ -173,9 +173,12 @@ class Puppet {
 const franckPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/franck.png", "https://www.atomisation.net/ihgame/media/franck-nu.png" , "Franck@ironhack.com",     "Franck",   1,         -2, -3 , -1 , -2 , 4 , 4, 0, "#b11e1e");           
 const claraPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/clara.png", "https://www.atomisation.net/ihgame/media/clara-nu.png" , "clara@ironhack.com",       "Clara",    0,           -1, -4 , -4 , -6 , 4 , 4, 0, "#23dca0");
 const tatjianaPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/tatjiana.png", "https://www.atomisation.net/ihgame/media/tatjiana-nu.png", "tatjiana@ironhack.com", "Tatjiana", 0,      -3, -5 , -5 , -7 , 4 , 4, 0, "#5f1a1d");
-const phPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/ph.png", "https://www.atomisation.net/ihgame/media/ph-nu.png" , "ph@ironhack.com",             "Ph",       1,                 -4, -1 , -2 , -2 , 4 , 4, 0, "#c211ce");
+const phPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/ph.png", "https://www.atomisation.net/ihgame/media/ph-nu.png" , "ph@ironhack.com",             "Ph",       1,                 -4, -1 , -2 , -2 , 4 , 4, 0, "#c189ce");
 const guillaumePuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/guillaume.png" , "https://www.atomisation.net/ihgame/media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume",2, -5, -6 , -3 , -4 , 4 , 4, 0, "#107ad6");
 var  yourPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/guillaume.png", "https://www.atomisation.net/ihgame/media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume", 0,       -2, -3 , -5 , -2 , 4 , 4, 0, "#FFFFFF");
+//For the purpose of demo here is :
+//Tatjiana : -7 -6 -6 -7
+
 
 let globalPuppet = new Object(); 
 
