@@ -132,23 +132,50 @@ class Puppet {
                         your TA fashion choices too, click here above to check your TA agreement !`            
         }        
         document.getElementById("ken-header-in").innerHTML = `Dress ${this.name} !`; 
-        document.getElementById("ken-nu").style.backgroundImage = "url('../"+this.imagenu+"')"; 
+        document.getElementById("ken-nu").style.backgroundImage = "url("+this.imagenu+")";
         let ma = Number(clothesHead.style.marginLeft.split("px")[0])-189;
         document.getElementById("ken-main").style.backgroundColor = this.backgroundColor;
         
+        document.getElementById("spriteuh").innerHTML= "< Head ";
+        document.getElementById("spritedh").innerHTML= "Head >";
+        document.getElementById("spriteuhi").innerHTML= "< Hips ";
+        document.getElementById("spritedhi").innerHTML= "Hips >";
+        document.getElementById("spriteut").innerHTML= "< Torso ";
+        document.getElementById("spritedt").innerHTML= "Torso >";
+        document.getElementById("spriteul").innerHTML= "< Legs ";
+        document.getElementById("spritedl").innerHTML= "Legs >";
         
-        
-        
+        document.getElementById("navToClara").classList = "dressNav";
+        document.getElementById("navToTatjiana").classList = "dressNav";
+        document.getElementById("navToGuillaume").classList = "dressNav";
+        document.getElementById("navToFranck").classList = "dressNav";
+        document.getElementById("navToPh").classList = "dressNav ";
 
+        console.log(this.name.toLowerCase());
+        if ( this.name.toLowerCase() == "clara" ){
+            document.getElementById("navToClara").classList = "dressNav activeNav";
+        }
+        if ( this.name.toLowerCase() == "tatjiana" ){
+            document.getElementById("navToTatjiana").classList = "dressNav activeNav";
+        }
+        if ( this.name.toLowerCase() == "guillaume" ){
+            document.getElementById("navToGuillaume").classList = "dressNav activeNav";
+        }
+        if ( this.name.toLowerCase() == "franck" ){
+            document.getElementById("navToFranck").classList = "dressNav activeNav";
+        }
+        if ( this.name.toLowerCase() == "ph" ){
+            document.getElementById("navToPh").classList = "dressNav activeNav";
+        }
     }    
 }  
 
-const franckPuppet = new Puppet( true, "media/franck.png", "media/franck-nu.png" , "Franck@ironhack.com",     "Franck",   1,         -2, -3 , -5 , -2 , 4 , 4, 0, "#b11e1e");           
-const claraPuppet = new Puppet( true, "media/clara.png", "media/clara-nu.png" , "clara@ironhack.com",       "Clara",    0,           -2, -3 , -5 , -2 , 4 , 4, 0, "#23dca0");
-const tatjianaPuppet = new Puppet( true, "media/tatjiana.png", "media/tatjiana-nu.png", "tatjiana@ironhack.com", "Tatjiana", 0,      -2, -3 , -5 , -2 , 4 , 4, 0, "#5f1a1d");
-const phPuppet = new Puppet( true, "media/ph.png", "media/ph-nu.png" , "ph@ironhack.com",             "Ph",       1,                 -2, -3 , -5 , -2 , 4 , 4, 0, "#c211ce");
-const guillaumePuppet = new Puppet( true, "media/guillaume.png" , "media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume",2, -2, -3 , -5 , -2 , 4 , 4, 0, "#107ad6");
-var  yourPuppet = new Puppet( true, "media/guillaume.png", "media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume", 0,       -2, -3 , -5 , -2 , 4 , 4, 0, "#FFFFFF");
+const franckPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/franck.png", "https://www.atomisation.net/ihgame/media/franck-nu.png" , "Franck@ironhack.com",     "Franck",   1,         -2, -3 , -1 , -2 , 4 , 4, 0, "#b11e1e");           
+const claraPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/clara.png", "https://www.atomisation.net/ihgame/media/clara-nu.png" , "clara@ironhack.com",       "Clara",    0,           -1, -4 , -4 , -6 , 4 , 4, 0, "#23dca0");
+const tatjianaPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/tatjiana.png", "https://www.atomisation.net/ihgame/media/tatjiana-nu.png", "tatjiana@ironhack.com", "Tatjiana", 0,      -3, -5 , -5 , -7 , 4 , 4, 0, "#5f1a1d");
+const phPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/ph.png", "https://www.atomisation.net/ihgame/media/ph-nu.png" , "ph@ironhack.com",             "Ph",       1,                 -4, -1 , -2 , -2 , 4 , 4, 0, "#c211ce");
+const guillaumePuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/guillaume.png" , "https://www.atomisation.net/ihgame/media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume",2, -5, -6 , -3 , -4 , 4 , 4, 0, "#107ad6");
+var  yourPuppet = new Puppet( true, "https://www.atomisation.net/ihgame/media/guillaume.png", "https://www.atomisation.net/ihgame/media/guillaume-nu.png", "guillaume@ironhack.com", "Guillaume", 0,       -2, -3 , -5 , -2 , 4 , 4, 0, "#FFFFFF");
 
 let globalPuppet = new Object(); 
 
@@ -260,7 +287,7 @@ var rateHead = [
     {
         "image": "sans",
         "name": "sans",
-        "rate" : -5,
+        "rate" : -320,
     },
     {
         "image": "",
@@ -277,13 +304,34 @@ var rateHead = [
         "name": "",
         "rate" : +6,
     },
+    {
+        "image": "sans",
+        "name": "sans",
+        "rate" : -32,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : 512,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : -42,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : +621,
+    },    
+    
 ]
 
 var rateTorso = [
     {
         "image": "sans",
         "name": "sans",
-        "rate" : 0,
+        "rate" : 18,
     },
     {
         "image": "",
@@ -298,15 +346,35 @@ var rateTorso = [
     {
         "image": "",
         "name": "",
-        "rate" : 6,
+        "rate" : 106,
     },
+    {
+        "image": "",
+        "name": "",
+        "rate" : 99,
+    },    
+     {
+        "image": "",
+        "name": "",
+        "rate" : 12,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : -12,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : 6,
+    },   
 ]
 
 var rateHips = [
     {
         "image": "sans",
         "name": "sans",
-        "rate" : 0,
+        "rate" : 99,
     },
     {
         "image": "",
@@ -321,11 +389,51 @@ var rateHips = [
     {
         "image": "",
         "name": "",
-        "rate" : 6,
+        "rate" : -35,
     },
+    {
+        "image": "sans",
+        "name": "sans",
+        "rate" : -8,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : 12,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : -12,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : 397,
+    },    
 ]
 
 var rateLegs = [
+    {
+        "image": "sans",
+        "name": "sans",
+        "rate" : 79,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : 12,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : -12,
+    },
+    {
+        "image": "",
+        "name": "",
+        "rate" : 4,
+    },
     {
         "image": "sans",
         "name": "sans",
@@ -334,18 +442,18 @@ var rateLegs = [
     {
         "image": "",
         "name": "",
-        "rate" : 12,
+        "rate" : -332,
     },
     {
         "image": "",
         "name": "",
-        "rate" : -12,
+        "rate" : -17,
     },
     {
         "image": "",
         "name": "",
-        "rate" : 6,
-    },
+        "rate" : -49,
+    },    
 ]
 function modifyScore( sourceScore, localScore, puppetClotheValue) {      
     scorePlayerByItem[sourceScore] = puppetClotheValue;
@@ -359,7 +467,7 @@ function checkMe(){
     let details = "";
     let enderScore = 0;
     if ( globalPuppet.head != scorePlayerByItem["head"] ){
-       details += "<span class='hclue'>Head: i 've got a bad feeling about it ...</span><br />";
+       details += "<span class='hclue'>Head: only a headache ...</span><br />";
     } else {
        details += "<span class='hclue' style='black'>Head: You're the dude </span><br />";         
        enderScore += 1;
@@ -383,15 +491,16 @@ function checkMe(){
        enderScore += 1;
     }
     
-    details += globalPuppet.head+" "+globalPuppet.torso+" "+globalPuppet.hips+" "+globalPuppet.legs
-    details += scorePlayerByItem["head"]+" "+scorePlayerByItem["torso"]+" "+scorePlayerByItem["hips"]+" "+scorePlayerByItem["legs"]
+    details += "<br /><span style='color:#d29292;'>For the purpose of demo here is :<br />";    
+    details += globalPuppet.head+" "+globalPuppet.torso+" "+globalPuppet.hips+" "+globalPuppet.legs+" ";
+    details += scorePlayerByItem["head"]+" "+scorePlayerByItem["torso"]+" "+scorePlayerByItem["hips"]+" "+scorePlayerByItem["legs"]+"</span>";
     
-    //verifir le scor ligne par ligne
+    //verifir le score ligne par ligne
    document.getElementById("comments").innerHTML = "Bad news for your sunshine, this is not what you expected to see you're too bad ! No time for excuses ! Go back to work and do it better next time ... and as i am not a bad guy here are some clues details to help you : <br />"+details;
 
-    if ( enderScore >= 4) {
-        document.getElementById("comments").innerHTML = "<span style='fontsize:20px;color:green;'>You 're the new Largerfeld !!! You won a date with the TA of your choice (well ... not .. that was a trap). Happy to see you again<span>"
-    }
+    //if ( enderScore >= 4) {
+    //    document.getElementById("comments").innerHTML = "<span style='fontsize:20px;color:green;'>You 're the new Largerfeld !!! You won a date with the TA of your choice (well ... not .. that was a trap). Happy to see you again<span>"
+    ///}
 }
 
 function checkAll() {
@@ -432,7 +541,7 @@ function checkAll() {
         let toAlert=""; 
         //finalScore =20;
         if ( finalScore < 20 ){
-            toAlert = "Well ... what's your problem ? a standard alert box is not enough ? But you fail ! you are just an ugly looser, then because of you and because of Pauline who has not been able to translate 'confetti' in english, your fucking score of "+finalScore+"/20 does'nt worth more than an alert box ... so try to dress up your TA's differently and maybe ... "   
+            toAlert = "Well ... what's your problem ? a standard alert box is not enough ? But you fail ! you are just an ugly looser, then because of you and because of Pauline who has not been able to translate 'confettis' in english, your fucking score of "+finalScore+"/20 does'nt worth more than an alert box ... so try to dress up your TA's differently and maybe ... "   
         } else { 
             toAlert = "What ??? You were expecting a nice popup with design, music, confetti ? but because we ran out of money ( and because of Pauline again  ...) and despite fucking score of "+finalScore+"/20, we decide to use the standard alert box to inform you that your winner price will only be available when you will began you retirement period ... good bye."               
         }   
